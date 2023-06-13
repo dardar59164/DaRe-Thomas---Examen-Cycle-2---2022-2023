@@ -100,7 +100,6 @@ button{
     background: blue;
     position: absolute;
     transform-origin: center;
-    top: 4rem;
     transition: all .5s;
 }
 
