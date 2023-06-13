@@ -102,7 +102,6 @@ button{
     transform-origin: center;
     top: 4rem;
     transition: all .5s;
-    transform: translateX(0);
 }
 
 #Labyrinthe {
@@ -125,12 +124,25 @@ button{
     width: 100%;
     height: 100%;
 }
+.path {
+    background: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+}
 
-#Exit {
+.exit {
     width: 100%;
     height: 100%;
     background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
     background-size: 0.50rem 0.50rem;
     background-position: 0 0, 0 0.25rem, 0.25rem -0.25rem, -0.25rem 0px;
-    grid-column: 9;
+}
+
+@keyframes nextLevel{
+    0% {height:1rem;width:1rem;}
+    25% {height:1.4rem;width:1.4rem;}
+    100% {height:0;width:0;}
+}
+.escape{
+    animation: nextLevel 2s forwards;
 }
