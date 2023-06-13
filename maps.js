@@ -1,14 +1,17 @@
 // ↓↓ Génération de Map ↓↓
-const labyrinth = document.querySelector('#Labyrinthe');
-
 function createTile(className) {
     let div = document.createElement('div');
     div.classList.add(className)
     return div;
 }
+
 // ↓↓ Première Map ↓↓
 if (labyrinth.dataset.level == "1"){
-    player.style.top = "4rem"
+
+    // ↓↓ Player Placement ↓↓
+    player.style.top = "4rem";
+
+    // ↓↓ Tiles Placement ↓↓
     let tileCount = 0;
     for (let i = 0; i < 36; i++) {    
         tileCount++;  
@@ -26,11 +29,17 @@ if (labyrinth.dataset.level == "1"){
         tileCount++;     
         labyrinth.appendChild(createTile('wall'));
     }
+
+    // ↓↓ Gestion du texte ↓↓
 }
 
 // ↓↓ Seconde Map ↓↓
 if (labyrinth.dataset.level == "2"){
-    player.style.left = "4rem"
+
+    // ↓↓ Player Placement ↓↓
+    player.style.left = "4rem";
+
+    // ↓↓ Tiles Placement ↓↓
     let tileCount = 0;
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
@@ -44,4 +53,8 @@ if (labyrinth.dataset.level == "2"){
             }
         }
     }
+    // ↓↓ Gestion du texte ↓↓
+
 }
+
+// ↓↓ Troisième Map ↓↓

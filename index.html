@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
-  <script src="maps.js" defer></script>
-  <title>Edugame</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <script src="maps.js" defer></script>
+    <title>Edugame</title>
 </head>
+
 <body>
     <div class="wrap">
         <div id="Application">
-            <h1>Transform: Labyrinth</h1>
+            <div style="display:flex;align-items:center;justify-content: space-between;">
+                <h1>Transform: Labyrinth</h1>
+                <div id="Indication-Niveaux">
+                    <span class="arrow" id="Left">
+                        <span class="triangle"></span>
+                    </span>
+                    Niveau <span class="actuel"></span> sur <span class="total">6</span>
+                    <span class="arrow" id="Right">
+                        <span class="triangle"></span>
+                    </span>
+                    <div id="Tooltip-Niveaux" class="hidden">
+                        <span class="niveau" id="lvl1">1</span>
+                        <span class="niveau" id="lvl2">2</span>
+                        <span class="niveau" id="lvl3">3</span>
+                        <span class="niveau" id="lvl4">4</span>
+                        <span class="niveau" id="lvl5">5</span>
+                        <span class="niveau" id="lvl6">6</span>
+                    </div>
+                </div>
+            </div>
+
             <section id="Instructions">
-                <p>Aidez le personnage à rejoindre la sortie à l'aide de la propriété "<span class="help transform">transform:</span>" disponible en CSS et l'éditeur de texte ci-dessous.</p>
-                <p id="Objectif">Pour rendre l'opération plus abordable, l'unité de mesure à utiliser de préfèrence est le rem, essayez par exemple: <br>"<span class="help">transform: translateX(1rem)</span>".</p>
+                <p>Aidez le personnage à rejoindre la sortie à l'aide de la propriété "<span
+                        class="help transform">transform:</span>" disponible en CSS et l'éditeur de texte ci-dessous.
+                </p>
+                <p id="Objectif">Pour rendre l'opération plus abordable, l'unité de mesure à utiliser de préfèrence est
+                    le rem, essayez par exemple: <br>"<span class="help">transform: translateX(1rem)</span>".</p>
             </section>
             <div class="editeur">
                 <div class="nbrLigne">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</div>
                 <pre>
 #Player{
    display:block;</pre>
-                    <textarea name="Propriete-CSS" id="CSS-Prompt" rows="1"></textarea>
+                <textarea name="Propriete-CSS" id="CSS-Prompt" rows="1"></textarea>
                 <pre>}</pre>
                 <button>Suivant</button>
             </div>
         </div>
-        <div id="Labyrinthe" data-level="2">
+        <div id="Labyrinthe" data-level="1">
             <div id="Player"></div>
         </div>
     </div>
 </body>
+
 </html>
