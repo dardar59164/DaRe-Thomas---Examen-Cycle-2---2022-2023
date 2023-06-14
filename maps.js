@@ -13,11 +13,24 @@ function createTile(className, id) {
   }
   return div;
 }
+function resetPlayer(joueur) {
+  joueur.style.transform = "unset";
+  joueur.classList.remove("escape");
+  playerCollidable = true;
+}
+function updateLevelTag() {
+  currentLevel == 1
+    ? leftArrow.classList.add("disabled")
+    : leftArrow.classList.remove("disabled");
+  currentLevel == totalLevel
+    ? rightArrow.classList.add("disabled")
+    : rightArrow.classList.remove("disabled");
+  lvlActuel.innerHTML = currentLevel;
+}
 function initGame(levelIndex) {
   let player = document.querySelector("#Player");
-  let goal = document.querySelector("#Exit");
-  let playerRect = player.getBoundingClientRect();
-  let goalRect = goal.getBoundingClientRect();
+  updateLevelTag();
+  resetPlayer(player);
 
   switch (levelIndex) {
     case 1:
@@ -41,6 +54,27 @@ function initGame(levelIndex) {
       player.style.left = "4rem";
       break;
 
+    case 4:
+      player.style.top = "unset";
+      player.style.right = "unset";
+      player.style.bottom = "0";
+      player.style.left = "4rem";
+      break;
+
+    case 5:
+      player.style.top = "8rem";
+      player.style.right = "unset";
+      player.style.bottom = "unset";
+      player.style.left = "unset";
+      break;
+
+    case 6:
+      player.style.top = "unset";
+      player.style.right = "unset";
+      player.style.bottom = "unset";
+      player.style.left = "unset";
+      break;
+
     default:
       break;
   }
@@ -50,14 +84,8 @@ function generateMap(levelIndex) {
   switch (levelIndex) {
     // ↓↓ Première Map ↓↓
     case 1:
-      playerCollidable = true;
       // ↓↓ Tiles Placement ↓↓
-      labyrinth.innerHTML = `
-      <div id="Playground-Wrap">
-          <div id="Playground">
-              <div id="Player"></div>
-          </div>
-      </div>`;
+      labyrinth.innerHTML = ``;
       for (let i = 0; i < 36; i++) {
         labyrinth.appendChild(createTile("wall"));
       }
@@ -72,17 +100,11 @@ function generateMap(levelIndex) {
 
       initGame(levelIndex);
 
-      // ↓↓ Gestion du texte ↓↓
       break;
+    // ↓↓ Deuxième Map ↓↓
     case 2:
-      playerCollidable = true;
       // ↓↓ Tiles Placement ↓↓
-      labyrinth.innerHTML = `
-      <div id="Playground-Wrap">
-          <div id="Playground">
-              <div id="Player"></div>
-          </div>
-      </div>`;
+      labyrinth.innerHTML = ``;
       for (let i = 0; i < 36; i++) {
         labyrinth.appendChild(createTile("wall"));
       }
@@ -99,17 +121,10 @@ function generateMap(levelIndex) {
 
       // ↓↓ Gestion du texte ↓↓
       break;
-
     // ↓↓ Troisième Map ↓↓
     case 3:
-      playerCollidable = true;
       // ↓↓ Tiles Placement ↓↓
-      labyrinth.innerHTML = `
-      <div id="Playground-Wrap">
-          <div id="Playground">
-              <div id="Player"></div>
-          </div>
-      </div>`;
+      labyrinth.innerHTML = ``;
       for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
           if (j == 4) {
@@ -122,14 +137,55 @@ function generateMap(levelIndex) {
         }
       }
       initGame(levelIndex);
-      // ↓↓ Gestion du texte ↓↓
       break;
     // ↓↓ Quatrième Map ↓↓
     case 4:
+      // ↓↓ Tiles Placement ↓↓
+      labyrinth.innerHTML = ``;
+      let count = 9;
+      for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+          if (i == 0 && j == 8){
+            labyrinth.appendChild(createTile(null, "Exit"))
+          } else {
+            j < count ? labyrinth.appendChild(createTile("path")) : labyrinth.appendChild(createTile("wall"));
+          }
+        }
+        count--;
+      }
+      initGame(levelIndex);
       break;
     case 5:
+      // ↓↓ Tiles Placement ↓↓
+      labyrinth.innerHTML = ``;
+      for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+          if (j == 4) {
+            i == 8
+              ? labyrinth.appendChild(createTile(null, "Exit"))
+              : labyrinth.appendChild(createTile("path"));
+          } else {
+            labyrinth.appendChild(createTile("wall"));
+          }
+        }
+      }
+      initGame(levelIndex);
       break;
     case 6:
+      // ↓↓ Tiles Placement ↓↓
+      labyrinth.innerHTML = ``;
+      for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+          if (j == 4) {
+            i == 8
+              ? labyrinth.appendChild(createTile(null, "Exit"))
+              : labyrinth.appendChild(createTile("path"));
+          } else {
+            labyrinth.appendChild(createTile("wall"));
+          }
+        }
+      }
+      initGame(levelIndex);
       break;
     case 999:
       break;
