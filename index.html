@@ -39,41 +39,72 @@
 
             <section id="Instructions">
                 <article data-instruction-level="1">
-                    <p>Bienvenue dans Transform: Labyrinth, un jeu qui peut vous aider à comprendre le fonctionnement de la propriété "<code class="help">transform:</code>". <br>Pour normaliser les déplacements l'unité de mesure à utiliser de préfèrence
+                    <p>Bienvenue dans Transform: Labyrinth, un jeu qui peut vous servir à comprendre le fonctionnement de la propriété "<code class="help">transform:</code>" en l'utilisant pour aider le pion à sortir du labyrinthe. <br>Pour normaliser les déplacements l'unité de mesure à utiliser de préfèrence
                         est le <u>rem</u>.
                     </p>
                     <p>Pour ce niveau il faudra utiliser l'une des valeurs suivantes:</p>
                     <ul>
-                        <li><code>translateX()</code></li>
-                        <li><code>translate(X, Y)</code></li>
+                        <li><code>translateX()</code>: effectue une translation sur l'axe horizontal.</li>
+                        <li><code>translate(X, Y)</code>: effectue une translation sur l'axe horizontal ou sur les deux axes.</li>
                     </ul>
-                    <p>Par exemple: "<code>transform: translateX(1rem);</code>" déplacera le pion d'une case vers la droite.
-                    </p>
+                    <p>Par exemple: "<code>transform: translateX(1rem);</code>" déplacera le pion d'une case vers la droite.</p>
                 </article>
                 <article data-instruction-level="2">
-
+                    <p>Utilisez à nouveau la propriété "<code class="help">transform:</code>" pour aider le pion à trouver la sortie. Souvenez-vous que l'unité de mesure à utiliser est le <u>rem</u>.
+                    </p>
+                    <p>Pour ce niveau il faudra encore utiliser l'une des valeurs suivantes:</p>
+                    <ul>
+                        <li><code>translateX()</code>: effectue une translation sur l'axe horizontal.</li>
+                        <li><code>translate(X, Y)</code>: effectue une translation sur l'axe horizontal ou sur les deux axes.</li>
+                    </ul>
                 </article>
                 <article data-instruction-level="3">
-
+                    <p>La propriété "<code class="help">transform:</code>" permet également de bouger verticalement. Souvenez-vous que l'unité de mesure à utiliser est le <u>rem</u>.</p>
+                    <p>Pour s'échapper de ce niveau il faudra utiliser l'une des valeurs suivantes:</p>
+                    <ul>
+                        <li><code>translateY()</code>: effectue une translation sur l'axe horizontal.</li>
+                        <li><code>translate(X, Y)</code>: effectue une translation sur l'axe horizontal ou sur les deux axes.</li>
+                    </ul>
+                    <p>Par exemple: "<code>transform: translateY(1rem);</code>" déplacera le pion d'une case vers le bas.</p>
                 </article>
                 <article data-instruction-level="4">
-
+                    <p>Toujours en utilisant "<code class="help">transform:</code>". </p>
+                    <p>Echappez-vous en utilisant l'une des valeurs suivantes:</p>
+                    <ul>
+                        <li><code>translateY()</code>: effectue une translation sur l'axe horizontal.</li>
+                        <li><code>translate(X, Y)</code>: effectue une translation sur l'axe horizontal ou sur les deux axes.</li>
+                    </ul>
+                    <p>Rappel: l'unité de mesure à utiliser est le <u>rem</u>.</p>
                 </article>
                 <article data-instruction-level="5">
-
+                    <p>C'est le moment de combiner les déplacements "<code class="help">transform:</code>". </p>
+                    <p>Le seul moyen de sortir de cet étage est de combiner les déplacements horizontaux et verticaux, pour ce faire vous pouvez utiliser la valeur suivante:</p>
+                    <ul>
+                        <li><code>translate(X, Y)</code>: effectue une translation sur l'axe horizontal ou sur les deux axes.</li>
+                    </ul>
+                    <p>Rappel: l'unité de mesure à utiliser est le <u>rem</u>.</p>
                 </article>
                 <article data-instruction-level="6">
-
+                    <p>Salut j'suis le texte n°6</p>
                 </article>
 
             </section>
             <div class="editeur">
                 <div class="nbrLigne">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</div>
-                <pre>
+                <div  id="playerMockHTML">
+                    <pre>
 #Player{
    display:block;</pre>
-                <textarea required name="Propriete-CSS" id="CSS-Prompt" rows="1"></textarea>
-                <pre>}</pre>
+                    <textarea required name="Propriete-CSS" id="Player-CSS" rows="1"></textarea>
+                    <pre>}</pre>
+                </div>
+                <div id="labyMockHTML">
+                    <pre>
+#Labyrinthe{
+   display:block;</pre>
+                    <textarea required name="Propriete-CSS" id="Labyrinth-CSS" rows="1"></textarea>
+                    <pre>}</pre>
+                </div>
                 <button>Suivant</button>
             </div>
         </div>

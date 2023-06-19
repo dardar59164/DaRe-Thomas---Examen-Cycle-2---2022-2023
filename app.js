@@ -1,6 +1,7 @@
 // ↓↓ CSS Related Objects↓↓
 const buttonElement = document.querySelector("button");
-const textAreaElement = document.querySelector("#CSS-Prompt");
+const playerTextArea = document.querySelector("#Player-CSS");
+const labyrinthTextArea = document.querySelector("#Labyrinth-CSS");
 
 // ↓↓ Level Selection Objets ↓↓
 const lvlActuel = document.querySelector("span.actuel");
@@ -25,6 +26,7 @@ window.onload = () => {
     ? (lvlTooltip.style.display = "none")
     : (lvlTooltip.style.display = "grid");
   generateMap(currentLevel);
+  displayTextFor(currentLevel);
 };
 lvlSelector.addEventListener("click", (event) => {
   lvlTooltip.classList.toggle("hidden");
@@ -37,32 +39,48 @@ leftArrow.addEventListener("click", () => {
   if (currentLevel > 1) {
     currentLevel--;
     generateMap(currentLevel);
+    displayTextFor(currentLevel);
   }
 });
 rightArrow.addEventListener("click", () => {
   if (currentLevel < 6) {
     currentLevel++;
     generateMap(currentLevel);
+    displayTextFor(currentLevel);
   }
 });
 niveaux.forEach((element) => {
   element.addEventListener("click", () => {
     currentLevel = parseInt(element.innerHTML);
     generateMap(currentLevel);
+    displayTextFor(currentLevel);
   });
 });
 
 // ↓↓ CSS Text Logic
 buttonElement.addEventListener("click", () => {
-  let css = textAreaElement.value;
-  if (!css.includes("transform:")) {
-    alert("Mauvaise Réponse");
+  let playerCSS = playerTextArea.value;
+  let labyrinthCSS = labyrinthTextArea.value;
+  if (playerCSS.includes("transform:") || labyrinthCSS.includes("transform:")) {
+    console.log(player)
+    player.style.cssText += playerCSS;
+    console.log(labyrinth)
+    labyrinth.style.cssText = labyrinthCSS;
   } else {
-    player.style.cssText += css;
+    alert("Mauvaise Réponse");
   }
 });
 
 // ↓↓ Gestion du texte ↓↓
+let instructions = document.querySelectorAll("article[data-instruction-level]");
+let mockHTML = document.querySelectorAll(".mockHTML");
+function displayTextFor(anyLevel) {
+  instructions.forEach((element) => {
+    parseInt(element.dataset.instructionLevel) == anyLevel
+      ? (element.style.display = "block")
+      : (element.style.display = "none");
+  });
+}
 
 // ↓↓ Collision Logic ↓↓
 let playerCollidable = true;
@@ -75,6 +93,7 @@ function collided(joueur) {
       alert("Good Job, You escaped level " + currentLevel + " !");
       currentLevel++;
       generateMap(currentLevel);
+      displayTextFor(currentLevel);
     }
   }, 2000);
 }
@@ -82,7 +101,7 @@ function collided(joueur) {
 function detectCollision(joueur, objectif) {
   let playerRect = joueur.getBoundingClientRect();
   let goalRect = objectif.getBoundingClientRect();
-  // console.log(joueur, objectif);
+  console.log(joueur, objectif);
 
   if (
     playerCollidable &&

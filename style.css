@@ -170,13 +170,14 @@ code {
 }
 
 .help:hover::after {
-    content: 'translateX() \A translateY() \A translateZ() \A translate([option X], [option Y], [option Z]) \A translate3d([option X], [option Y], [option Z]) \A\A rotateX() \A rotateY() \A rotateZ() \A rotate([option X], [option Y], [option Z]) \A rotate3d([option X], [option Y], [option Z]) \A\A scaleX() \A scaleY() \A scaleZ() \A scale([option X], [option Y]) \A scale3d([option X], [option Y], [option Z])';
+    content: 'translateX(); \A translateY(); \A translateZ(); \A translate([option X], [option Y], [option Z]); \A translate3d([option X], [option Y], [option Z]); \A\A rotateX(angle); \A rotateY(angle); \A rotateZ(angle); \A rotate([option X], [option Y], [option Z]); \A rotate3d([option X], [option Y], [option Z]); \A\A scaleX(); \A scaleY(); \A scaleZ(); \A scale([option X], [option Y]); \A scale3d([option X], [option Y], [option Z]);';
     position: absolute;
     width: fit-content;
     height: fit-content;
     background: #2c3e50;
+    /* background: #7b5bc5; */
     white-space: pre-wrap;
-    padding: 10px;
+    padding: 3px 10px;
     z-index: 100;
 }
 
@@ -240,6 +241,8 @@ button {
 /* ↓↓ Visuel du jeu ↓↓ */
 #Game {
     position: relative;
+    display: flex;
+    justify-content: center;
     z-index: 10;
     min-height: 9rem;
 }
@@ -250,9 +253,6 @@ button {
     height: 9rem;
     width: 9rem;
     position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
 }
 
 #Playground {
@@ -262,9 +262,6 @@ button {
 
 #Labyrinthe {
     position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
     display: grid;
     grid-template-columns: repeat(9, 1rem);
     grid-template-rows: repeat(9, 1rem);
@@ -338,19 +335,6 @@ button {
 
     #Application {
         margin: 0 auto;
-    }
-
-    #Playground-Wrap {
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-    }
-
-    #Labyrinthe {
-        position: absolute;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
     }
 }
 
