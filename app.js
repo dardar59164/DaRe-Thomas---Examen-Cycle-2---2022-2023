@@ -21,6 +21,9 @@ let currentLevel = 1;
 window.onload = () => {
   lvlActuel.innerHTML = currentLevel;
   leftArrow.classList.add("disabled");
+  lvlTooltip.classList.contains("hidden")
+    ? (lvlTooltip.style.display = "none")
+    : (lvlTooltip.style.display = "grid");
   generateMap(currentLevel);
 };
 lvlSelector.addEventListener("click", (event) => {
@@ -79,7 +82,7 @@ function collided(joueur) {
 function detectCollision(joueur, objectif) {
   let playerRect = joueur.getBoundingClientRect();
   let goalRect = objectif.getBoundingClientRect();
-  console.log(joueur, objectif)
+  // console.log(joueur, objectif);
 
   if (
     playerCollidable &&

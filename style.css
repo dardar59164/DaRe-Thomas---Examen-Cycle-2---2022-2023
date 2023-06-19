@@ -150,30 +150,36 @@ p {
     font-size: 15px;
     font-family: 'PT Sans', sans-serif;
 }
-ul{
+
+ul {
     font-size: 15px;
 }
+
 code {
     padding: 0 2px;
     background-color: rgba(255, 255, 255, 0.2);
     font-family: 'Source Code Pro', monospace;
-    font-weight: 900;
+    font-weight: 700;
     color: rgba(255, 255, 255, 0.8);
     white-space: nowrap;
 }
-.help{
+
+.help {
     border-bottom: rgba(255, 255, 255, 0.8) 1px solid;
     cursor: pointer;
 }
-.help:hover::after{
-    content: 'translateX() \A translateY() \A translateZ() \A translate([option X], [option Y], [option Z]) \A translate3d([option X], [option Y], [option Z]) \A ';
+
+.help:hover::after {
+    content: 'translateX() \A translateY() \A translateZ() \A translate([option X], [option Y], [option Z]) \A translate3d([option X], [option Y], [option Z]) \A\A rotateX() \A rotateY() \A rotateZ() \A rotate([option X], [option Y], [option Z]) \A rotate3d([option X], [option Y], [option Z]) \A\A scaleX() \A scaleY() \A scaleZ() \A scale([option X], [option Y]) \A scale3d([option X], [option Y], [option Z])';
     position: absolute;
     width: fit-content;
     height: fit-content;
-    padding: 10px;
     background: #2c3e50;
     white-space: pre-wrap;
+    padding: 10px;
+    z-index: 100;
 }
+
 .editeur {
     position: relative;
     background-color: rgb(224, 224, 244);
@@ -240,7 +246,7 @@ button {
 
 
 #Playground-Wrap {
-    background: rgba(255, 255, 255, 0.2);
+    /* background: rgba(255, 255, 255, 0.2); */
     height: 9rem;
     width: 9rem;
     position: absolute;
@@ -270,6 +276,8 @@ button {
     border-radius: 20px;
     overflow: hidden;
     transition: all .5s;
+    -webkit-box-shadow: 0px 0px 4px 2px #000;
+    box-shadow: 0px 0px 4px 2px #000;
 }
 
 #Player {
@@ -277,7 +285,8 @@ button {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background: blue;
+    background: url("RoundSprite.png");
+    background-size: cover;
     position: absolute;
     transform-origin: center;
     transition: all .5s;
@@ -344,7 +353,8 @@ button {
         transform: translateX(-50%);
     }
 }
-@media only screen and (max-width: 1500px){
+
+@media only screen and (max-width: 1500px) {
     .wrap {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
