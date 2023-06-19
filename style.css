@@ -219,7 +219,9 @@ button {
 }
 
 #Labyrinthe {
-    position: relative;
+    position: fixed;
+    top: 1rem;
+    right: 1.2rem;
     display: grid;
     grid-template-columns: repeat(9, 1rem);
     grid-template-rows: repeat(9, 1rem);
@@ -259,11 +261,11 @@ button {
     position: fixed;
     top: 1rem;
     right: 1.2rem;
-    margin: auto 0;
 }
 
 #Playground {
     position: relative;
+    margin: auto 0 auto 1rem;
 }
 
 .wall {

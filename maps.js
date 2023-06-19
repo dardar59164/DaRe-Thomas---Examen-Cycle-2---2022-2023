@@ -37,7 +37,7 @@ function initGame(levelIndex) {
       player.style.top = "4rem";
       player.style.right = "unset";
       player.style.bottom = "unset";
-      player.style.left = "unset";
+      player.style.left = "-1rem";
       break;
 
     case 2:
@@ -51,14 +51,14 @@ function initGame(levelIndex) {
       player.style.top = "unset";
       player.style.right = "unset";
       player.style.bottom = "unset";
-      player.style.left = "4rem";
+      player.style.left = "3rem";
       break;
 
     case 4:
-      player.style.top = "unset";
+      player.style.top = "8rem";
       player.style.right = "unset";
-      player.style.bottom = "0";
-      player.style.left = "4rem";
+      player.style.bottom = "unset";
+      player.style.left = "-1rem";
       break;
 
     case 5:
