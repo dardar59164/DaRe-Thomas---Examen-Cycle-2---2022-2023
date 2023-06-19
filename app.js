@@ -79,6 +79,7 @@ function collided(joueur) {
 function detectCollision(joueur, objectif) {
   let playerRect = joueur.getBoundingClientRect();
   let goalRect = objectif.getBoundingClientRect();
+  console.log(joueur, objectif)
 
   if (
     playerCollidable &&

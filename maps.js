@@ -15,6 +15,10 @@ function createTile(className, id) {
 }
 function resetPlayer(joueur) {
   joueur.style.transform = "unset";
+  joueur.style.top = "unset";
+  joueur.style.right = "unset";
+  joueur.style.bottom = "unset";
+  joueur.style.left = "unset";
   joueur.classList.remove("escape");
   playerCollidable = true;
 }
@@ -35,44 +39,27 @@ function initGame(levelIndex) {
   switch (levelIndex) {
     case 1:
       player.style.top = "4rem";
-      player.style.right = "unset";
-      player.style.bottom = "unset";
-      player.style.left = "-1rem";
+      player.style.left = "0";
       break;
 
     case 2:
       player.style.top = "4rem";
       player.style.right = "0";
-      player.style.bottom = "unset";
-      player.style.left = "unset";
       break;
 
     case 3:
-      player.style.top = "unset";
-      player.style.right = "unset";
-      player.style.bottom = "unset";
-      player.style.left = "3rem";
+      player.style.left = "4rem";
       break;
 
     case 4:
       player.style.top = "8rem";
-      player.style.right = "unset";
-      player.style.bottom = "unset";
-      player.style.left = "-1rem";
       break;
 
     case 5:
       player.style.top = "8rem";
-      player.style.right = "unset";
-      player.style.bottom = "unset";
-      player.style.left = "unset";
       break;
 
     case 6:
-      player.style.top = "unset";
-      player.style.right = "unset";
-      player.style.bottom = "unset";
-      player.style.left = "unset";
       break;
 
     default:
@@ -145,10 +132,12 @@ function generateMap(levelIndex) {
       let count = 9;
       for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-          if (i == 0 && j == 8){
-            labyrinth.appendChild(createTile(null, "Exit"))
+          if (i == 0 && j == 8) {
+            labyrinth.appendChild(createTile(null, "Exit"));
           } else {
-            j < count ? labyrinth.appendChild(createTile("path")) : labyrinth.appendChild(createTile("wall"));
+            j < count
+              ? labyrinth.appendChild(createTile("path"))
+              : labyrinth.appendChild(createTile("wall"));
           }
         }
         count--;
