@@ -68,7 +68,7 @@ body {
     align-items: center;
     gap: 2px;
     width: fit-content;
-    top: 45px;
+    top: 47px;
     left: 50%;
     transform: translate(-50%, 0);
 }
@@ -331,8 +331,50 @@ button {
     animation: nextLevel 2s forwards;
 }
 
-@media only screen and (max-width: 1600px) {
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
 
+    33% {
+        transform: translateX(-1rem);
+    }
+
+    66% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: shake .5s forwards 0s 2;
+}
+
+#levelEndScreen {
+    backdrop-filter: blur(12px);
+    background: linear-gradient(45deg, #000000c0, #00000018);
+    width: 40%;
+    height: 30%;
+    overflow: hidden;
+    border-radius: 20px;
+}
+#levelEndScreen h2{
+    font-family: 'Fredoka One', cursive;
+    color: #fff;
+    margin: 0;
+    font-size: .8rem;
+    text-align: center;
+}
+#levelEndScreen button{
+    left: 50%;
+    bottom: 1rem;
+    transform: translate(-50%, 0);
+}
+
+@media only screen and (max-width: 1600px) {
     #Application {
         margin: 0 auto;
     }

@@ -30,7 +30,9 @@ function updateLevelTag() {
   currentLevel == totalLevel
     ? rightArrow.classList.add("disabled")
     : rightArrow.classList.remove("disabled");
-  lvlActuel.innerHTML = currentLevel;
+    lvlActuel.forEach(element => {
+      element.innerHTML = currentLevel;
+    });
 }
 function initGame(levelIndex) {
   let player = document.querySelector("#Player");
