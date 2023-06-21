@@ -6,6 +6,7 @@ const editeur = document.querySelector(".editeur");
 
 // ↓↓ Level Selection Objets ↓↓
 const lvlActuel = document.querySelectorAll("span.actuel");
+const lvlFinal = document.querySelectorAll("span.total");
 const lvlSelector = document.querySelector(".prevent-select");
 const lvlTooltip = document.querySelector("#Tooltip-Niveaux");
 const leftArrow = document.querySelector(".arrow#Left");
@@ -19,12 +20,15 @@ const endScreen = document.querySelector("#levelEndScreen");
 const nextLevelButton = document.querySelector("#Next");
 
 // ↓↓ Level Selection ↓↓
-const totalLevel = 6;
+const totalLevel = 9;
 let currentLevel = 1;
 
 window.onload = () => {
-  lvlActuel.forEach(element => {
+  lvlActuel.forEach((element) => {
     element.innerHTML = currentLevel;
+  });
+  lvlFinal.forEach((element) => {
+    element.innerHTML = totalLevel;
   });
   leftArrow.classList.add("disabled");
   lvlTooltip.classList.contains("hidden")
@@ -47,7 +51,7 @@ leftArrow.addEventListener("click", () => {
   }
 });
 rightArrow.addEventListener("click", () => {
-  if (currentLevel < 6) {
+  if (currentLevel < totalLevel) {
     currentLevel++;
     generateMap(currentLevel);
     displayTextFor(currentLevel);

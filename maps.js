@@ -30,9 +30,9 @@ function updateLevelTag() {
   currentLevel == totalLevel
     ? rightArrow.classList.add("disabled")
     : rightArrow.classList.remove("disabled");
-    lvlActuel.forEach(element => {
-      element.innerHTML = currentLevel;
-    });
+  lvlActuel.forEach((element) => {
+    element.innerHTML = currentLevel;
+  });
 }
 function initGame(levelIndex) {
   let player = document.querySelector("#Player");
@@ -77,6 +77,21 @@ function initGame(levelIndex) {
       break;
 
     case 6:
+      playerMockHTML.style.display = "none";
+      labyMockHTML.style.display = "block";
+      player.style.top = "4rem";
+      break;
+    case 7:
+      playerMockHTML.style.display = "none";
+      labyMockHTML.style.display = "block";
+      player.style.top = "4rem";
+      break;
+    case 8:
+      playerMockHTML.style.display = "none";
+      labyMockHTML.style.display = "block";
+      player.style.top = "4rem";
+      break;
+    case 9:
       playerMockHTML.style.display = "none";
       labyMockHTML.style.display = "block";
       player.style.top = "4rem";
@@ -182,8 +197,62 @@ function generateMap(levelIndex) {
       }
       initGame(levelIndex);
       break;
-    // ↓↓ Cinquième Map ↓↓
+    // ↓↓ Sixième Map ↓↓
     case 6:
+      // ↓↓ Tiles Placement ↓↓
+      labyrinth.innerHTML = ``;
+      for (let i = 0; i < 36; i++) {
+        labyrinth.appendChild(createTile("wall"));
+      }
+      for (let i = 0; i < 9; i++) {
+        i == 8
+          ? labyrinth.appendChild(createTile(null, "Exit"))
+          : labyrinth.appendChild(createTile("path"));
+      }
+      for (let i = 0; i < 36; i++) {
+        labyrinth.appendChild(createTile("wall"));
+      }
+
+      initGame(levelIndex);
+      break;
+    // ↓↓ Septième Map ↓↓
+    case 7:
+      // ↓↓ Tiles Placement ↓↓
+      labyrinth.innerHTML = ``;
+      for (let i = 0; i < 36; i++) {
+        labyrinth.appendChild(createTile("wall"));
+      }
+      for (let i = 0; i < 9; i++) {
+        i == 8
+          ? labyrinth.appendChild(createTile(null, "Exit"))
+          : labyrinth.appendChild(createTile("path"));
+      }
+      for (let i = 0; i < 36; i++) {
+        labyrinth.appendChild(createTile("wall"));
+      }
+
+      initGame(levelIndex);
+      break;
+    // ↓↓ Huitième Map ↓↓
+    case 8:
+      // ↓↓ Tiles Placement ↓↓
+      labyrinth.innerHTML = ``;
+      for (let i = 0; i < 36; i++) {
+        labyrinth.appendChild(createTile("wall"));
+      }
+      for (let i = 0; i < 9; i++) {
+        i == 8
+          ? labyrinth.appendChild(createTile(null, "Exit"))
+          : labyrinth.appendChild(createTile("path"));
+      }
+      for (let i = 0; i < 36; i++) {
+        labyrinth.appendChild(createTile("wall"));
+      }
+
+      initGame(levelIndex);
+      break;
+    // ↓↓ Neuvième Map ↓↓
+    case 9:
       // ↓↓ Tiles Placement ↓↓
       labyrinth.innerHTML = ``;
       for (let i = 0; i < 36; i++) {

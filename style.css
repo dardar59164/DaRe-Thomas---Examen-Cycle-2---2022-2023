@@ -361,14 +361,16 @@ button {
     overflow: hidden;
     border-radius: 20px;
 }
-#levelEndScreen h2{
+
+#levelEndScreen h2 {
     font-family: 'Fredoka One', cursive;
     color: #fff;
     margin: 0;
     font-size: .8rem;
     text-align: center;
 }
-#levelEndScreen button{
+
+#levelEndScreen button {
     left: 50%;
     bottom: 1rem;
     transform: translate(-50%, 0);
