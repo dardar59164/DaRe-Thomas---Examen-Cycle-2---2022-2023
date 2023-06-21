@@ -20,8 +20,10 @@ function resetGame(joueur, plateau) {
   joueur.style.bottom = "unset";
   joueur.style.left = "unset";
   joueur.classList.remove("escape");
-  playerCollidable = true;
   plateau.style.transform = "unset";
+  setTimeout(() => {
+    playerCollidable = true;
+  }, 1000);
 }
 function updateLevelTag() {
   currentLevel == 1
@@ -81,16 +83,19 @@ function initGame(levelIndex) {
       labyMockHTML.style.display = "block";
       player.style.top = "4rem";
       break;
+
     case 7:
-      playerMockHTML.style.display = "none";
-      labyMockHTML.style.display = "block";
+      playerMockHTML.style.display = "block";
+      labyMockHTML.style.display = "none";
       player.style.top = "4rem";
       break;
+
     case 8:
       playerMockHTML.style.display = "none";
       labyMockHTML.style.display = "block";
       player.style.top = "4rem";
       break;
+      
     case 9:
       playerMockHTML.style.display = "none";
       labyMockHTML.style.display = "block";
