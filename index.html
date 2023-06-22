@@ -103,14 +103,21 @@
                 <article data-instruction-level="6">
                     <p>Changeons un peu les règles à notre avantage grâce à "<code class="help">transform:</code>" et
                         ses rotations.</p>
-                    <p>L'une des options qui s'offre à vous est la valeur suivante:</p>
+                    <p>Plusieurs options s'offrent à vous pour ce niveau:</p>
                     <ul>
                         <li><code>rotateZ()</code>: effectue une rotation sur la profondeur</li>
+                        <li><code>rotateY()</code>: effectue une rotation sur l'axe vertical'</li>
                     </ul>
                     <p>Rappel: l'unité de mesure à utiliser pour les angles est: <u>deg</u>.</p>
                 </article>
                 <article data-instruction-level="7">
-                    texte 7
+                    <p>Oups, il semble que la sortie soit trop petite pour pouvoir s'échapper !</p>
+                    <p>Essayez de lui rendre sa taille normale en utilisant la propriété "<code class="help">transform:</code>"</p>
+                    <ul>
+                        <li><code>scale()</code>: la valeur par défaut de scale() est de 1.</li>
+                    </ul>
+                    <p>Rappel: l'unité de mesure à utiliser pour les déplacements est le <u>rem</u>.</p>
+                    <p>(Vous pouvez tester individuellement chaque champs pour voir le résultat obtenu.)</p>
                 </article>
                 <article data-instruction-level="8">
                     texte 8
@@ -124,15 +131,25 @@
                 <div id="playerMockHTML">
                     <pre>
 #Player{
-   display:block;</pre>
+   transform-origin: center;
+   transition: transform 0.5s;</pre>
                     <textarea required name="Propriete-CSS" id="Player-CSS" rows="1"></textarea>
                     <pre>}</pre>
                 </div>
                 <div id="labyMockHTML">
                     <pre>
 #Labyrinthe{
-   display:block;</pre>
+   transform-origin: center;
+   transition: transform 0.5s;</pre>
                     <textarea required name="Propriete-CSS" id="Labyrinth-CSS" rows="1"></textarea>
+                    <pre>}</pre>
+                </div>
+                <div id="goalMockHTML">
+                    <pre>
+#Goal{
+   transform-origin: center;
+   transition: transform 0.5s;</pre>
+                    <textarea required name="Propriete-CSS" id="Goal-CSS" rows="1"></textarea>
                     <pre>}</pre>
                 </div>
                 <button>Suivant</button>

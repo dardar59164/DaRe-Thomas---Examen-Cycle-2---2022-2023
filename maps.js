@@ -39,8 +39,7 @@ function updateLevelTag() {
 function initGame(levelIndex) {
   let player = document.querySelector("#Player");
   let labyrinth = document.querySelector("#Labyrinthe");
-  let playerMockHTML = document.querySelector("#playerMockHTML");
-  let labyMockHTML = document.querySelector("#labyMockHTML");
+  let goal = document.querySelector('#Exit');
   updateLevelTag();
   resetGame(player, labyrinth);
 
@@ -48,6 +47,7 @@ function initGame(levelIndex) {
     case 1:
       playerMockHTML.style.display = "block";
       labyMockHTML.style.display = "none";
+      goalMockHTML.style.display = "none"
       player.style.top = "4rem";
       player.style.left = "0";
       break;
@@ -55,6 +55,7 @@ function initGame(levelIndex) {
     case 2:
       playerMockHTML.style.display = "block";
       labyMockHTML.style.display = "none";
+      goalMockHTML.style.display = "none"
       player.style.top = "4rem";
       player.style.right = "0";
       break;
@@ -62,12 +63,14 @@ function initGame(levelIndex) {
     case 3:
       playerMockHTML.style.display = "block";
       labyMockHTML.style.display = "none";
+      goalMockHTML.style.display = "none"
       player.style.left = "4rem";
       break;
 
     case 4:
       playerMockHTML.style.display = "block";
       labyMockHTML.style.display = "none";
+      goalMockHTML.style.display = "none"
       player.style.left = "4rem";
       player.style.top = "8rem";
       break;
@@ -75,30 +78,35 @@ function initGame(levelIndex) {
     case 5:
       playerMockHTML.style.display = "block";
       labyMockHTML.style.display = "none";
+      goalMockHTML.style.display = "none"
       player.style.top = "8rem";
       break;
 
     case 6:
       playerMockHTML.style.display = "none";
       labyMockHTML.style.display = "block";
+      goalMockHTML.style.display = "none"
       player.style.top = "4rem";
       break;
 
     case 7:
       playerMockHTML.style.display = "block";
       labyMockHTML.style.display = "none";
-      player.style.top = "4rem";
+      goalMockHTML.style.display = "block"
+      goal.style.transform = "scale(0)";
       break;
 
     case 8:
       playerMockHTML.style.display = "none";
       labyMockHTML.style.display = "block";
+      goalMockHTML.style.display = "none"
       player.style.top = "4rem";
       break;
       
     case 9:
       playerMockHTML.style.display = "none";
       labyMockHTML.style.display = "block";
+      goalMockHTML.style.display = "none"
       player.style.top = "4rem";
       break;
 
@@ -224,18 +232,19 @@ function generateMap(levelIndex) {
     case 7:
       // ↓↓ Tiles Placement ↓↓
       labyrinth.innerHTML = ``;
-      for (let i = 0; i < 36; i++) {
-        labyrinth.appendChild(createTile("wall"));
-      }
+      count = 0 ;
       for (let i = 0; i < 9; i++) {
-        i == 8
-          ? labyrinth.appendChild(createTile(null, "Exit"))
-          : labyrinth.appendChild(createTile("path"));
+        for (let j = 0; j < 9; j++) {
+          if (i == 8 && j == 8) {
+            labyrinth.appendChild(createTile(null, "Exit"));
+          } else {
+            j > count - 1
+              ? labyrinth.appendChild(createTile("path"))
+              : labyrinth.appendChild(createTile("wall"));
+          }
+        }
+        count++;
       }
-      for (let i = 0; i < 36; i++) {
-        labyrinth.appendChild(createTile("wall"));
-      }
-
       initGame(levelIndex);
       break;
     // ↓↓ Huitième Map ↓↓

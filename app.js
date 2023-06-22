@@ -2,6 +2,10 @@
 const buttonElement = document.querySelector("button");
 const playerTextArea = document.querySelector("#Player-CSS");
 const labyrinthTextArea = document.querySelector("#Labyrinth-CSS");
+const goalTextArea = document.querySelector("#Goal-CSS");
+let playerMockHTML = document.querySelector("#playerMockHTML");
+let labyMockHTML = document.querySelector("#labyMockHTML");
+let goalMockHTML = document.querySelector("#goalMockHTML");
 const editeur = document.querySelector(".editeur");
 
 // ↓↓ Level Selection Objets ↓↓
@@ -67,12 +71,21 @@ niveaux.forEach((element) => {
 
 // ↓↓ CSS Text Logic
 buttonElement.addEventListener("click", () => {
+  let goal = document.querySelector("#Exit");
   let playerCSS = playerTextArea.value;
   let labyrinthCSS = labyrinthTextArea.value;
-  if (playerCSS.includes("transform:") || labyrinthCSS.includes("transform:")) {
-    currentLevel == 6
-      ? (labyrinth.style.cssText = labyrinthCSS)
-      : (player.style.cssText += playerCSS);
+  let goalCSS = goalTextArea.value;
+  if (playerCSS.includes("transform:") || labyrinthCSS.includes("transform:") || goalCSS.includes("transform:")) {
+    
+    if (playerMockHTML.style.display == "block"){
+      player.style.cssText += playerCSS
+    }
+    if (labyMockHTML.style.display == "block"){
+      labyrinth.style.cssText += labyrinthCSS
+    }
+    if (goalMockHTML.style.display == "block"){
+      goal.style.cssText += goalCSS
+    }
   } else {
     editeur.classList.add("shake");
     setTimeout(() => {

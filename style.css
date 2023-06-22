@@ -239,11 +239,14 @@ button {
 }
 
 /* ↓↓ Visuel du jeu ↓↓ */
+#Application {
+    z-index: 2;
+}
 #Game {
     position: relative;
     display: flex;
     justify-content: center;
-    z-index: 10;
+    z-index: 1;
     min-height: 9rem;
 }
 
@@ -266,13 +269,13 @@ button {
     grid-template-columns: repeat(9, 1rem);
     grid-template-rows: repeat(9, 1rem);
     transform-origin: center;
+    transition: transform .5s;
     background: bisque;
     min-height: 9rem;
     min-width: 9rem;
     margin: auto 0;
     border-radius: 20px;
     overflow: hidden;
-    transition: transform .5s;
     -webkit-box-shadow: 0px 0px 4px 2px #000;
     box-shadow: 0px 0px 4px 2px #000;
 }
@@ -302,6 +305,7 @@ button {
 }
 
 #Exit {
+    transition: transform .5s;
     width: 100%;
     height: 100%;
     background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
