@@ -3,6 +3,10 @@
 //     parent.removeChild(parent.lastChild);
 //   }
 // }
+let goal;
+let goalRect;
+let playerRect;
+let playerCollidable = true;
 
 // ↓↓ Création adaptative des différentes cases du plateau ↓↓
 function createTile(className, id) {
@@ -49,7 +53,6 @@ function updateLevelTag() {
 function initGame(levelIndex) {
   let player = document.querySelector("#Player");
   let labyrinth = document.querySelector("#Labyrinthe");
-  let goal = document.querySelector("#Exit");
   updateLevelTag();
   resetGame(player, labyrinth);
 
@@ -117,6 +120,8 @@ function initGame(levelIndex) {
     default:
       break;
   }
+  goal = document.querySelector("#Exit");
+  goalRect = goal.getBoundingClientRect();
 }
 
 // ↓↓ Génération des niveaux ↓↓
@@ -275,3 +280,37 @@ function generateMap(levelIndex) {
       break;
   }
 }
+
+// ↓↓ Collision Logic ↓↓
+
+function collided() {
+  playerCollidable = false;
+  player.classList.toggle("escape");
+  setTimeout(() => {
+    if (currentLevel < totalLevel) {
+      endScreen.showModal();
+    }
+  }, 2000);
+}
+
+// ↓↓ Détection des collisions ↓↓
+function detectCollision() {
+  playerRect = player.getBoundingClientRect();
+  if(goalRect){
+    if (
+      playerCollidable &&
+      playerRect.left < goalRect.left + goalRect.width &&
+      playerRect.left + playerRect.width > goalRect.left &&
+      playerRect.top < goalRect.top + goalRect.height &&
+      playerRect.height + playerRect.top > goalRect.top
+    ) {
+      collided();
+    }
+  }
+}
+// ↓↓ Boucle de détection des collisions ↓↓
+function gameLoop() {
+  detectCollision();
+  window.requestAnimationFrame(gameLoop);
+}
+window.requestAnimationFrame(gameLoop);

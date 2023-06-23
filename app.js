@@ -121,41 +121,8 @@ function displayTextFor(anyLevel) {
   });
 }
 
-// ↓↓ Détection des collisions ↓↓
-function detectCollision(joueur, objectif) {
-  let playerRect = joueur.getBoundingClientRect();
-  let goalRect = objectif.getBoundingClientRect();
-  if (
-    playerCollidable &&
-    playerRect.left < goalRect.left + goalRect.width &&
-    playerRect.left + playerRect.width > goalRect.left &&
-    playerRect.top < goalRect.top + goalRect.height &&
-    playerRect.height + playerRect.top > goalRect.top
-  ) {
-    collided(joueur);
-  }
-}
-// ↓↓ Boucle de détection des collisions ↓↓
-window.requestAnimationFrame(gameLoop);
-function gameLoop() {
-  let player = document.querySelector("#Player");
-  let goal = document.querySelector("#Exit");
-  detectCollision(player, goal);
-  window.requestAnimationFrame(gameLoop);
-}
 
-// ↓↓ Collision Logic ↓↓
-let playerCollidable = true;
 
-function collided(joueur) {
-  playerCollidable = false;
-  joueur.classList.toggle("escape");
-  setTimeout(() => {
-    if (currentLevel < totalLevel) {
-      endScreen.showModal();
-    }
-  }, 2000);
-}
 
 // ↓↓ Changement de niveau ↓↓
 nextLevelButton.addEventListener("click", () => {
