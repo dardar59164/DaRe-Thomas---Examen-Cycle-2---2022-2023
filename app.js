@@ -1,11 +1,11 @@
 // ↓↓ CSS Related Objects↓↓
-const buttonElement = document.querySelector("button");
+const buttonCSS = document.querySelector("button");
 const playerTextArea = document.querySelector("#Player-CSS");
 const labyrinthTextArea = document.querySelector("#Labyrinth-CSS");
 const goalTextArea = document.querySelector("#Goal-CSS");
-let playerMockHTML = document.querySelector("#playerMockHTML");
-let labyMockHTML = document.querySelector("#labyMockHTML");
-let goalMockHTML = document.querySelector("#goalMockHTML");
+let playerMockCSS = document.querySelector("#playerMockCSS");
+let labyMockCSS = document.querySelector("#labyMockCSS");
+let goalMockCSS = document.querySelector("#goalMockCSS");
 const editeur = document.querySelector(".editeur");
 
 // ↓↓ Level Selection Objets ↓↓
@@ -24,9 +24,10 @@ const endScreen = document.querySelector("#levelEndScreen");
 const nextLevelButton = document.querySelector("#Next");
 
 // ↓↓ Level Selection ↓↓
-const totalLevel = 9;
+const totalLevel = 8;
 let currentLevel = 1;
 
+// ↓↓ Lancement du niveau 1 à l'arrivée sur la page ↓↓
 window.onload = () => {
   lvlActuel.forEach((element) => {
     element.innerHTML = currentLevel;
@@ -41,12 +42,16 @@ window.onload = () => {
   generateMap(currentLevel);
   displayTextFor(currentLevel);
 };
+
+// ↓↓ Ouvre la fenêtre de sélection des niveaux ↓↓
 lvlSelector.addEventListener("click", (event) => {
   lvlTooltip.classList.toggle("hidden");
   lvlTooltip.classList.contains("hidden")
     ? (lvlTooltip.style.display = "none")
     : (lvlTooltip.style.display = "grid");
 });
+
+// ↓↓ Revenir au niveau précédent ↓↓
 leftArrow.addEventListener("click", () => {
   if (currentLevel > 1) {
     currentLevel--;
@@ -54,6 +59,8 @@ leftArrow.addEventListener("click", () => {
     displayTextFor(currentLevel);
   }
 });
+
+// ↓↓ Passer au niveau suivant ↓↓
 rightArrow.addEventListener("click", () => {
   if (currentLevel < totalLevel) {
     currentLevel++;
@@ -61,6 +68,8 @@ rightArrow.addEventListener("click", () => {
     displayTextFor(currentLevel);
   }
 });
+
+// ↓↓ Sélection rapide des niveaux ↓↓
 niveaux.forEach((element) => {
   element.addEventListener("click", () => {
     currentLevel = parseInt(element.innerHTML);
@@ -69,24 +78,32 @@ niveaux.forEach((element) => {
   });
 });
 
-// ↓↓ CSS Text Logic
-buttonElement.addEventListener("click", () => {
+// ↓↓ CSS Text Logic ↓↓
+buttonCSS.addEventListener("click", () => {
   let goal = document.querySelector("#Exit");
+  // ↓↓ Récupère les valeurs des textAreas ↓↓
   let playerCSS = playerTextArea.value;
   let labyrinthCSS = labyrinthTextArea.value;
   let goalCSS = goalTextArea.value;
-  if (playerCSS.includes("transform:") || labyrinthCSS.includes("transform:") || goalCSS.includes("transform:")) {
-    
-    if (playerMockHTML.style.display == "block"){
-      player.style.cssText += playerCSS
+
+  // ↓↓ Vérifie si le textArea contient bien une propriété transform ↓↓
+  if (
+    playerCSS.includes("transform:") ||
+    labyrinthCSS.includes("transform:") ||
+    goalCSS.includes("transform:")
+  ) {
+    // ↓↓ Affichage dynamique des faux CSS basé sur la fonction initGame() ↓↓
+    if (playerMockCSS.style.display == "block") {
+      player.style.cssText += playerCSS;
     }
-    if (labyMockHTML.style.display == "block"){
-      labyrinth.style.cssText += labyrinthCSS
+    if (labyMockCSS.style.display == "block") {
+      labyrinth.style.cssText += labyrinthCSS;
     }
-    if (goalMockHTML.style.display == "block"){
-      goal.style.cssText += goalCSS
+    if (goalMockCSS.style.display == "block") {
+      goal.style.cssText += goalCSS;
     }
   } else {
+    // ↓↓ Feedback en cas d'erreur ou de cases vides ↓↓
     editeur.classList.add("shake");
     setTimeout(() => {
       editeur.classList.remove("shake");
@@ -94,7 +111,7 @@ buttonElement.addEventListener("click", () => {
   }
 });
 
-// ↓↓ Gestion du texte ↓↓
+// ↓↓ Affichage des instructions correspondantes à chaque niveau ↓↓
 let instructions = document.querySelectorAll("article[data-instruction-level]");
 function displayTextFor(anyLevel) {
   instructions.forEach((element) => {
@@ -102,6 +119,29 @@ function displayTextFor(anyLevel) {
       ? (element.style.display = "block")
       : (element.style.display = "none");
   });
+}
+
+// ↓↓ Détection des collisions ↓↓
+function detectCollision(joueur, objectif) {
+  let playerRect = joueur.getBoundingClientRect();
+  let goalRect = objectif.getBoundingClientRect();
+  if (
+    playerCollidable &&
+    playerRect.left < goalRect.left + goalRect.width &&
+    playerRect.left + playerRect.width > goalRect.left &&
+    playerRect.top < goalRect.top + goalRect.height &&
+    playerRect.height + playerRect.top > goalRect.top
+  ) {
+    collided(joueur);
+  }
+}
+// ↓↓ Boucle de détection des collisions ↓↓
+window.requestAnimationFrame(gameLoop);
+function gameLoop() {
+  let player = document.querySelector("#Player");
+  let goal = document.querySelector("#Exit");
+  detectCollision(player, goal);
+  window.requestAnimationFrame(gameLoop);
 }
 
 // ↓↓ Collision Logic ↓↓
@@ -116,7 +156,8 @@ function collided(joueur) {
     }
   }, 2000);
 }
-// ↓↓ Next Level ↓↓
+
+// ↓↓ Changement de niveau ↓↓
 nextLevelButton.addEventListener("click", () => {
   if (currentLevel < totalLevel) {
     currentLevel++;
@@ -124,25 +165,3 @@ nextLevelButton.addEventListener("click", () => {
     displayTextFor(currentLevel);
   }
 });
-function detectCollision(joueur, objectif) {
-  let playerRect = joueur.getBoundingClientRect();
-  let goalRect = objectif.getBoundingClientRect();
-  // console.log("debug")
-  if (
-    playerCollidable &&
-    playerRect.left < goalRect.left + goalRect.width &&
-    playerRect.left + playerRect.width > goalRect.left &&
-    playerRect.top < goalRect.top + goalRect.height &&
-    playerRect.height + playerRect.top > goalRect.top
-  ) {
-    collided(joueur);
-  }
-}
-window.requestAnimationFrame(gameLoop);
-
-function gameLoop() {
-  let player = document.querySelector("#Player");
-  let goal = document.querySelector("#Exit");
-  detectCollision(player, goal);
-  window.requestAnimationFrame(gameLoop);
-}

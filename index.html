@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="maps.js" defer></script>
     <script src="app.js" defer></script>
-    <title>Edugame</title>
+    <title>Transform: Labyrinth</title>
 </head>
 
 <body>
@@ -17,15 +17,19 @@
             <div style="display:flex;align-items:center;justify-content: space-between;min-width:700px">
                 <h1>Transform: Labyrinth</h1>
                 <div id="Indication-Niveaux">
+                    <!-- Niveau précédent -->
                     <span class="arrow" id="Left">
                         <span class="triangle"></span>
                     </span>
+                    <!-- Indication du niveau actuel -->
                     <div class="prevent-select" style="line-height: 30px;">
                         Niveau <span class="actuel"></span> sur <span class="total"></span>
                     </div>
+                    <!-- Niveau suivant -->
                     <span class="arrow" id="Right">
                         <span class="triangle"></span>
                     </span>
+                    <!-- Menu déroulant & Sélection rapide des niveaux -->
                     <div id="Tooltip-Niveaux" class="hidden">
                         <span class="niveau">1</span>
                         <span class="niveau">2</span>
@@ -35,12 +39,11 @@
                         <span class="niveau">6</span>
                         <span class="niveau">7</span>
                         <span class="niveau">8</span>
-                        <span class="niveau">9</span>
                     </div>
                 </div>
             </div>
-
             <section id="Instructions">
+                <!-- ↓↓ Niveau 1 ↓↓ -->
                 <article data-instruction-level="1">
                     <p>Bienvenue dans Transform: Labyrinth, un jeu qui peut vous servir à comprendre le fonctionnement
                         de la propriété "<code class="help">transform:</code>" en l'utilisant pour aider le pion à
@@ -57,6 +60,7 @@
                     <p>Par exemple: "<code>transform: translateX(1rem);</code>" déplacera le pion d'une case vers la
                         droite.</p>
                 </article>
+                <!-- ↓↓ Niveau 2 ↓↓ -->
                 <article data-instruction-level="2">
                     <p>Utilisez à nouveau la propriété "<code class="help">transform:</code>" pour aider le pion à
                         trouver la sortie. Souvenez-vous que l'unité de mesure à utiliser est le <u>rem</u>.
@@ -68,6 +72,7 @@
                             axes.</li>
                     </ul>
                 </article>
+                <!-- ↓↓ Niveau 3 ↓↓ -->
                 <article data-instruction-level="3">
                     <p>La propriété "<code class="help">transform:</code>" permet également de bouger verticalement.
                         Souvenez-vous que l'unité de mesure à utiliser est le <u>rem</u>.</p>
@@ -80,6 +85,7 @@
                     <p>Par exemple: "<code>transform: translateY(1rem);</code>" déplacera le pion d'une case vers le
                         bas.</p>
                 </article>
+                <!-- ↓↓ Niveau 4 ↓↓ -->
                 <article data-instruction-level="4">
                     <p>Toujours en utilisant "<code class="help">transform:</code>". </p>
                     <p>Echappez-vous en utilisant l'une des valeurs suivantes:</p>
@@ -90,6 +96,7 @@
                     </ul>
                     <p>Rappel: l'unité de mesure à utiliser est le <u>rem</u>.</p>
                 </article>
+                <!-- ↓↓ Niveau 5 ↓↓ -->
                 <article data-instruction-level="5">
                     <p>C'est le moment de combiner les déplacements "<code class="help">transform:</code>". </p>
                     <p>Le seul moyen de sortir de cet étage est de combiner les déplacements horizontaux et verticaux,
@@ -100,6 +107,7 @@
                     </ul>
                     <p>Rappel: l'unité de mesure à utiliser est le <u>rem</u>.</p>
                 </article>
+                <!-- ↓↓ Niveau 6 ↓↓ -->
                 <article data-instruction-level="6">
                     <p>Changeons un peu les règles à notre avantage grâce à "<code class="help">transform:</code>" et
                         ses rotations.</p>
@@ -110,25 +118,32 @@
                     </ul>
                     <p>Rappel: l'unité de mesure à utiliser pour les angles est: <u>deg</u>.</p>
                 </article>
+                <!-- ↓↓ Niveau 7 ↓↓ -->
                 <article data-instruction-level="7">
                     <p>Oups, il semble que la sortie soit trop petite pour pouvoir s'échapper !</p>
-                    <p>Essayez de lui rendre sa taille normale en utilisant la propriété "<code class="help">transform:</code>"</p>
+                    <p>Essayez de lui rendre sa taille normale en utilisant la propriété "<code
+                            class="help">transform:</code>"</p>
                     <ul>
                         <li><code>scale()</code>: la valeur par défaut de scale() est de 1.</li>
                     </ul>
                     <p>Rappel: l'unité de mesure à utiliser pour les déplacements est le <u>rem</u>.</p>
                     <p>(Vous pouvez tester individuellement chaque champs pour voir le résultat obtenu.)</p>
                 </article>
+                <!-- ↓↓ Niveau 8 ↓↓ -->
                 <article data-instruction-level="8">
-                    texte 8
-                </article>
-                <article data-instruction-level="9">
-                    texte 9
+                    <p>C'est le chaos dans le labyrinthe et vous avez perdu le contrôle du joueur mettez à profit ce que
+                        vous avez appris plus tôt pour manipuler le terrain à l'aide de "<code
+                            class="help">transform:</code>".</p>
+                    <p>Libre à vous d'utiliser les propriétés de votre choix.</p>
+                    <p>Rappel: l'unité de mesure à utiliser pour les angles est: <u>deg</u> et <u>rem</u> pour les
+                        déplacements.</p>
                 </article>
             </section>
+            <!-- ↓↓ Editeur de code CSS ↓↓ -->
             <div class="editeur">
                 <div class="nbrLigne">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</div>
-                <div id="playerMockHTML">
+                <!-- Indication de l'objet ciblé par le CSS -->
+                <div id="playerMockCSS">
                     <pre>
 #Player{
    transform-origin: center;
@@ -136,7 +151,8 @@
                     <textarea required name="Propriete-CSS" id="Player-CSS" rows="1"></textarea>
                     <pre>}</pre>
                 </div>
-                <div id="labyMockHTML">
+                <!-- Indication de l'objet ciblé par le CSS -->
+                <div id="labyMockCSS">
                     <pre>
 #Labyrinthe{
    transform-origin: center;
@@ -144,7 +160,8 @@
                     <textarea required name="Propriete-CSS" id="Labyrinth-CSS" rows="1"></textarea>
                     <pre>}</pre>
                 </div>
-                <div id="goalMockHTML">
+                <!-- Indication de l'objet ciblé par le CSS -->
+                <div id="goalMockCSS">
                     <pre>
 #Goal{
    transform-origin: center;
@@ -155,14 +172,15 @@
                 <button>Suivant</button>
             </div>
         </div>
+        <!-- ↓↓ Visuel du jeu ↓↓ -->
         <section id="Game">
-
             <div id="Labyrinthe"></div>
             <div id="Playground-Wrap">
                 <div id="Playground">
                     <div id="Player"></div>
                 </div>
             </div>
+            <!-- Pop-Up de fin de niveau -->
             <dialog id="levelEndScreen">
                 <h2>Bien joué, vous venez d'échapper au niveau <span class="actuel"></span></h2>
                 <form method="dialog">
