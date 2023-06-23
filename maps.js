@@ -3,10 +3,10 @@
 //     parent.removeChild(parent.lastChild);
 //   }
 // }
-let goal = document.querySelector("#Exit");;
-let goalRect = goal.getBoundingClientRect();
-let playerRect = player.getBoundingClientRect();
 let playerCollidable = true;
+let goal;
+let goalRect;
+let playerRect;
 
 // ↓↓ Création adaptative des différentes cases du plateau ↓↓
 function createTile(className, id) {
@@ -120,7 +120,6 @@ function initGame(levelIndex) {
     default:
       break;
   }
-  goal = document.querySelector("#Exit");
 }
 
 // ↓↓ Génération des niveaux ↓↓
@@ -294,7 +293,6 @@ function collided() {
 
 // ↓↓ Détection des collisions ↓↓
 function detectCollision() {
-  playerRect = player.getBoundingClientRect();
   if(goalRect){
     if (
       playerCollidable &&
@@ -309,7 +307,6 @@ function detectCollision() {
 }
 // ↓↓ Boucle de détection des collisions ↓↓
 function gameLoop() {
-  goalRect = goal.getBoundingClientRect();
   detectCollision();
   window.requestAnimationFrame(gameLoop);
 }

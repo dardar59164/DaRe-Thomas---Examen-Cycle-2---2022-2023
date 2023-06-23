@@ -58,13 +58,12 @@ body {
     flex-wrap: nowrap;
 }
 
-/* ↓↓ Sélection rapide ↓↓ */
 #Tooltip-Niveaux {
     position: absolute;
     padding: 10px;
     background: #2c3e50;
     display: grid;
-    grid-template-columns: repeat(4, 30px);
+    grid-template-columns: repeat(3, 40px);
     justify-content: center;
     align-items: center;
     gap: 2px;
@@ -91,13 +90,12 @@ body {
     display: flex;
     background: #7b5bc5;
     border-radius: 50%;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     justify-content: center;
     align-items: center;
 }
 
-/* ↓↓ Niveau suivant / précédent ↓↓ */
 .arrow {
     display: inline-flex;
     align-items: center;
@@ -244,7 +242,6 @@ button {
 #Application {
     z-index: 2;
 }
-
 #Game {
     position: relative;
     display: flex;
@@ -316,7 +313,7 @@ button {
     background-position: 0 0, 0 0.25rem, 0.25rem -0.25rem, -0.25rem 0px;
 }
 
-/* ↓↓ Animation de fin de niveau ↓↓ */
+
 @keyframes nextLevel {
     0% {
         height: 1rem;
@@ -338,7 +335,6 @@ button {
     animation: nextLevel 2s forwards;
 }
 
-/* ↓↓ Feedback d'erreur ↓↓ */
 @keyframes shake {
     0% {
         transform: translateX(0);
@@ -361,7 +357,6 @@ button {
     animation: shake .5s forwards 0s 2;
 }
 
-/* Pop-Up de fin de niveau */
 #levelEndScreen {
     backdrop-filter: blur(12px);
     background: linear-gradient(45deg, #000000c0, #00000018);
@@ -385,7 +380,6 @@ button {
     transform: translate(-50%, 0);
 }
 
-/* Responsive Tablette / Accessibilité */
 @media only screen and (max-width: 1600px) {
     #Application {
         margin: 0 auto;
