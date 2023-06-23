@@ -22,6 +22,7 @@ const labyrinth = document.querySelector("#Labyrinthe");
 const player = document.querySelector("#Player");
 const endScreen = document.querySelector("#levelEndScreen");
 const nextLevelButton = document.querySelector("#Next");
+let playerCollidable = true;
 
 // ↓↓ Level Selection ↓↓
 const totalLevel = 8;
@@ -120,9 +121,6 @@ function displayTextFor(anyLevel) {
       : (element.style.display = "none");
   });
 }
-
-
-
 
 // ↓↓ Changement de niveau ↓↓
 nextLevelButton.addEventListener("click", () => {
